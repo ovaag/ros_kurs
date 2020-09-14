@@ -1,7 +1,15 @@
 <launch>
-
-    <node pkg="ROS_kurs" type="speed_profile" name="speed_profile" output="screen"/>
+    <arg name = "gdb" default="false"/>
 
     <node pkg="ROS_kurs" type="lateral_control" name="lateral_control" output="screen"/>
+
+
+    <node if="$(arg gdb)" pkg="ROS_kurs" type="speed_profile" name="speed_profile" output="screen" launch-prefix="xterm -e gdb -q --args">
+        <param name="Kp" value="8.0"/>
+    </node>
+
+    <node unless="$(arg gdb)" pkg="ROS_kurs" type="speed_profile" name="speed_profile" output="screen">
+        <param name="Kp" value="8.0"/>
+    </node>
 
 </launch>
