@@ -1,0 +1,7 @@
+<launch>
+
+    <node pkg="ROS_kurs" type="speed_profile" name="speed_profile" output="screen"/>
+
+    <node pkg="ROS_kurs" type="lateral_control" name="lateral_control" output="screen"/>
+
+</launch>
